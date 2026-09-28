@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="uk"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Чи підходить мені професія копірайтера?</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F5EBDD;--card:#FFF8EE;--ink:#3B2618;--brown:#6B4226;--gold:#B8893B;--line:#E4D3BB;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#2A1B12;--card:#3A271A;--ink:#F5EBDD;--brown:#D9B48A;--gold:#D4A84F;--line:#5A4030}}
+:root[data-theme="dark"]{--bg:#2A1B12;--card:#3A271A;--ink:#F5EBDD;--brown:#D9B48A;--gold:#D4A84F;--line:#5A4030}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 Montserrat,system-ui,sans-serif}
+.w{max-width:560px;margin:0 auto;padding:24px 18px 40px}
+h1,h2{font-family:'Playfair Display',Georgia,serif;line-height:1.2;color:var(--brown)}
+h1{font-size:30px;margin:8px 0 12px}h2{font-size:22px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px}
+.btn{display:block;width:100%;text-align:left;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:12px;padding:14px;margin:10px 0;font:inherit;cursor:pointer}
+.btn:active,.btn:hover{border-color:var(--gold)}
+.go{background:var(--brown);color:var(--card);text-align:center;font-weight:600;border:0}
+.bar{height:6px;background:var(--line);border-radius:6px;margin-bottom:18px}.bar i{display:block;height:100%;background:var(--gold);border-radius:6px;transition:width .3s}
+small{color:var(--brown)}.hide{display:none}
+</style></head><body><div class="w">
+<div id="app"></div></div>
+<script>
+var Q=[
+["Тобі кажуть: «Напиши текст про наш продукт». Твоя перша реакція?",["Ого, класно! Одразу думаю, з якого боку зайти","Спершу питаю: для кого, навіщо і що має статися після тексту","Гуглю приклади й роблю схоже","Тривожусь — а якщо не вийде?"],[3,3,1,1]],
+["Скільки ти читаєш щодня (книжки, статті, пости, розсилки)?",["Постійно, без цього нікуди","Регулярно, особливо по темі роботи","Трохи, здебільшого короткі формати","Майже не читаю"],[3,2,1,0]],
+["Клієнт написав: «Правки: не «вау», зробіть краще». Що робиш?",["Уточнюю, що саме не так, і пропоную варіанти","Переписую наосліп, поки не вгадаю","Ображаюсь, але переписую","Кидаю проєкт"],[3,1,1,0]],
+["Що тобі ближче в роботі?",["Розібратись у темі й знайти сильну ідею","Красиво скласти слова","Працювати за чітким ТЗ без сюрпризів","Швидко здати й забути"],[3,3,1,0]],
+["Як ставишся до самостійної роботи без начальника й планерок?",["Люблю, сама організовую день","Нормально, якщо є дедлайни","Мені потрібен хтось, хто мотивує","Нервує"],[3,2,1,0]],
+["Як ти реагуєш, коли текст «не пішов»?",["Розбираю, що не так, і роблю висновки","Шукаю підказки в порадах і курсах","Чекаю натхнення","Здаюсь"],[3,2,1,0]],
+["Чи цікаво тобі, чому люди купують, а чому ні?",["Дуже, спостерігаю за цим скрізь","Іноді помічаю","Не думала про це","Нецікаво"],[3,2,1,0]],
+["Скільки готова вчитись і практикувати, поки з'являться перші клієнти?",["Кілька місяців щодня по трохи, без проблем","Півроку — ок, якщо бачу прогрес","Хочу результат за тиждень-два","Навчання — не моє"],[3,2,1,0]]
+];
+var i=0,s=0,app=document.getElementById('app');
+function start(){app.innerHTML='<div class="card"><small>Тест за 3 хвилини</small><h1>Чи підходить мені професія копірайтера?</h1><p>8 запитань без правильних відповідей. Отримаєш свій результат і план, з чого почати. Відповідай так, як є насправді, а не як «треба».</p><button class="btn go" onclick="i=0;s=0;q()">Почати</button></div>'}
+function q(){var d=Q[i];var h='<div class="bar"><i style="width:'+(i/Q.length*100)+'%"></i></div><div class="card"><small>Питання '+(i+1)+' з '+Q.length+'</small><h2>'+d[0]+'</h2>';
+d[1].forEach(function(t,k){h+='<button class="btn" onclick="a('+d[2][k]+')">'+t+'</button>'});app.innerHTML=h+'</div>'}
+function a(p){s+=p;i++;i<Q.length?q():r()}
+function r(){var m=Q.length*3,t,x,n;
+if(s>=m*0.75){t='Ти народжений копірайтер';x='У тебе є головне: цікавість до людей, любов до слів і готовність працювати самостійно. Залишилось підсилити навичками: структура тексту, дослідження аудиторії, робота з брифом.';n='Візьми одне реальне завдання (пост, опис товару чи лендінг) і напиши його за формулою «для кого → що хочу, щоб зробили → чому повірять». Це вже портфоліо.'}
+else if(s>=m*0.45){t='Копірайтинг — твій, але треба потренуватись';x='База є, а ще є зони росту: десь бракує дисципліни, десь впевненості. Це нормально, ці навички тренуються швидше, ніж здається.';n='Обери один формат (наприклад, пости для соцмереж) і пиши по одному тексту щодня протягом двох тижнів. Покажи комусь і збери фідбек.'}
+else{t='Поки що це не про тебе, і це теж відповідь';x='Копірайтинг вимагає багато читання, самостійності й терпіння до правок. Якщо зараз це не про тебе, можливо, тобі ближче суміжні напрямки: редактура, SMM, контент-менеджмент або творче письмо.';n='Спробуй один тестовий текст без тиску. Якщо буде цікаво, повертайся до тесту через місяць.'}
+app.innerHTML='<div class="card"><small>Твій результат: '+s+' із '+m+'</small><h1>'+t+'</h1><p>'+x+'</p><h2>Твій перший крок</h2><p>'+n+'</p><p>Хочеш більше про копірайтинг простою мовою? Заглядай в Instagram <b>@ginger.copy_writing</b>, там усе без зайвого тиску.</p><a class="btn go" href="https://instagram.com/ginger.copy_writing" target="_blank" rel="noopener">Перейти в Instagram</a><button class="btn" onclick="start()">Пройти ще раз</button></div>'}
+start();
+</script></body></html>
